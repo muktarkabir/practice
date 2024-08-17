@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>User</title>
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgb(240, 157, 240);
+				height: 100dvh;
+				overflow: hidden;
+			}
+			.container {
+				width: 80px;
+				height: 80px;
+				padding: 6px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				
+			}
+			.container div {
+				box-shadow: 2px 2px 1px rgb(21, 5, 238);
+				background-color: red;
+				cursor: pointer;
+			}
+			
+			
+			.container:hover{
+				scale: 1.4;
+				transition: 0.8s ease-in-out;
+				transform: rotate(360deg);
+
+				div{
+					box-shadow: 6px 6px 1px blue;
+					transition: 1.2s ease-in-out;	
+				}
+			}
+			.top {
+				height: 45%;
+				width: 50%;
+				border-radius: 50%;
+				align-self: center;
+			}
+			.bottom {
+				height: 55%;
+				width: 100%;
+				border-top-left-radius: 100px;
+				border-top-right-radius: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="top"></div>
+			<div class="bottom"></div>
+		</div>
+	</body>
+	
+</html>

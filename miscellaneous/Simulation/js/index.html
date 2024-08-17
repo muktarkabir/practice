@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function generateRandom(a, c, m, seed) {
+				// An array to store the random numbers
+				let sequence = [];
+				// A h1 element to display the generated numbers
+				let visual = document.createElement("h1");
+				// A forloop to generate the sequence
+				for (let i = 0; i <= c; i++) {
+					setTimeout(() => {
+						visual = document.createElement("h1");
+						visual.textContent = `X${i} = (${a} * ${seed} + ${c}) mod ${m} = ${(a * seed + c) % m}.`;
+						seed = (a * seed + c) % m;
+						sequence.push(seed);
+						document.body.append(visual);
+					}, i * 1000);
+				}
+				setTimeout(() => {
+					let visual2 = document.createElement("h1");
+					visual2.textContent = `The generated sequence is [${sequence}].`;
+					document.body.append(visual2);
+				}, (c + 1) * 1000);
+			}
+
+			generateRandom(5, 7, 8, 4);
+		</script>
+	</body>
+</html>
