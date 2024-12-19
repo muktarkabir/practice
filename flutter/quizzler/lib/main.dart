@@ -45,25 +45,25 @@ class _QuizPageState extends State<QuizPage> {
   int wins = 0, losses = 0;
 
   AlertStyle alertStyle() => AlertStyle(
-    animationType: AnimationType.fromTop,
-    isCloseButton: false,
-    isOverlayTapDismiss: false,
-    descStyle: const TextStyle(
-      fontWeight: FontWeight.normal,
-    ),
-    descTextAlign: TextAlign.center,
-    animationDuration: const Duration(milliseconds: 400),
-    alertBorder: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(16.0),
-      side: const BorderSide(
-        color: Colors.grey,
-      ),
-    ),
-    titleStyle: TextStyle(
-      color: alertColor(),
-    ),
-    alertAlignment: Alignment.center,
-  );
+        animationType: AnimationType.fromTop,
+        isCloseButton: false,
+        isOverlayTapDismiss: false,
+        descStyle: const TextStyle(
+          fontWeight: FontWeight.normal,
+        ),
+        descTextAlign: TextAlign.center,
+        animationDuration: const Duration(milliseconds: 400),
+        alertBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+          side: const BorderSide(
+            color: Colors.grey,
+          ),
+        ),
+        titleStyle: TextStyle(
+          color: alertColor(),
+        ),
+        alertAlignment: Alignment.center,
+      );
 
   Color alertColor() {
     if (wins > losses) {
@@ -185,11 +185,11 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
           ),
-          Row(
-            children: scoreKeeper,
-          )
+          ConstrainedBox(
+              constraints: const BoxConstraints(minHeight: 20.0),
+              child: Wrap(
+                children: scoreKeeper,
+              )),
         ]);
   }
 }
-
-
