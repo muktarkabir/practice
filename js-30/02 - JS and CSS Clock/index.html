@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS + CSS Clock</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+        <div class="hand center"></div>
+      </div>
+    </div>
+    <p class="digital-clock"></p>
+
+    <style>
+      html {
+        background: #018ded url(https://unsplash.it/1500/1000?image=881&blur=5);
+        background-size: cover;
+        font-family: "helvetica neue";
+        text-align: center;
+        font-size: 10px;
+      }
+
+      body {
+        margin: 0;
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .digital-clock {
+        font-size: 3rem;
+        color: white;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgb(83, 83, 81);
+      }
+
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+          inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(
+          -3px
+        ); /* account for the height of the clock hands */
+      }
+
+      .hand:not(.center) {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: all 0.05s;
+        transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+      }
+      .hand.center {
+        position: absolute;
+        top: 46%;
+        left: 44%;
+        width: 30px;
+        height: 30px;
+        background: white;
+        border-radius: 50%;
+      }
+    </style>
+
+    <script>
+      const secondHand = document.querySelector(".second-hand");
+      const minutesHand = document.querySelector(".min-hand");
+      const hourHand = document.querySelector(".hour-hand");
+      const digitalTime = document.querySelector(".digital-clock");
+      function setDate() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const minutes = now.getMinutes();
+        const hours = now.getHours();
+        const secondsDegree = (seconds / 60) * 360 + 90;
+        const minutesDegree = (minutes / 60) * 360 + 90;
+        const hoursDegree = (hours / 12) * 360 + 90;
+        secondHand.style.transform = `rotate(${secondsDegree}deg)`;
+        minutesHand.style.transform = `rotate(${minutesDegree}deg)`;
+        hourHand.style.transform = `rotate(${hoursDegree}deg)`;
+        if (now.getHours() > 12) {
+          let hour = now.getHours() - 12;
+          digitalTime.textContent =
+            hour + now.toTimeString().substring(2, 8) + " PM ";
+        } else {
+          digitalTime.textContent = now.toTimeString().substring(0, 8) + " AM ";
+        }
+      }
+      setInterval(setDate, 1000);
+
+      setInterval(() => {
+        const audio = new Audio("./Recording (4).m4a");
+        console.log(audio);
+        audio.play();
+      }, 360000);
+    </script>
+  </body>
+</html>
